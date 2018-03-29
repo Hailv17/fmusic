@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1042495739651",
+    "firebase_url": "https://fmusic-6426f.firebaseio.com",
+    "project_id": "fmusic-6426f",
+    "storage_bucket": "fmusic-6426f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042495739651:android:3f0bcc68ec8a11b0",
+        "android_client_info": {
+          "package_name": "com.hailv.fmusic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042495739651-ajkm6e5v9o09dssmo1cgefucl77mci46.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hailv.fmusic",
+            "certificate_hash": "339a58b67566215ea5f8731419355cd58eaa927b"
+          }
+        },
+        {
+          "client_id": "1042495739651-59gc2r5csonvg9uhb3sctk6ace76haso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO_uYZKAwhmsCVTfBsQe7WkbLvZRp6-ZM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042495739651-59gc2r5csonvg9uhb3sctk6ace76haso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

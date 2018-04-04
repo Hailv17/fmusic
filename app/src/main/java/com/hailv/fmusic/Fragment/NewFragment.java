@@ -1,13 +1,12 @@
 package com.hailv.fmusic.Fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 
 import com.hailv.fmusic.R;
 import com.hailv.fmusic.model.HomeAdapter;
@@ -16,34 +15,28 @@ import com.hailv.fmusic.model.Songs;
 import java.util.ArrayList;
 
 /**
- * Created by msi on 3/22/2018.
+ * Created by nomor on 4/3/2018.
  */
 
-public class NewFragment extends Fragment{
-    private ListView lvNew;
+public class NewFragment extends Fragment {
     private ArrayList<Songs> songs;
     private HomeAdapter songAdapter;
-
+    private ListView lvMusic;
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View setting = inflater.inflate(R.layout.new_fragment_layout,container,false);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_new, container, false);
 
-        lvNew = setting.findViewById(R.id.lvNew);
-
+        lvMusic = view.findViewById(R.id.lvNew);
         songs = new ArrayList<>();
+        songAdapter = new HomeAdapter(getContext(),R.layout.item_home_layout,songs);
 
-
-        songAdapter = new HomeAdapter(getActivity(), R.layout.item_home_layout, songs);
-        lvNew.setAdapter(songAdapter);
+        lvMusic.setAdapter(songAdapter);
 
         createSong();
 
-
-
-        return setting;
+        return view;
     }
-
 
     private void createSong(){
         Songs song1 = new Songs("abc","abc");
@@ -59,5 +52,11 @@ public class NewFragment extends Fragment{
         songs.add(song5);
 
         songAdapter.notifyDataSetChanged();
+    }
+
+    public void LoadListView(){
+        HomeAdapter adapter = new HomeAdapter(getContext(),R.layout.item_home_layout, songs);
+        lvMusic.setAdapter(songAdapter);
+        adapter.notifyDataSetChanged();
     }
 }

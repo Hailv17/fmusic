@@ -3,7 +3,9 @@
     package="com.hailv.fmusic">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
@@ -30,12 +32,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.SignupActivity"></activity>
-        <activity android:name=".Activity.MainActivity"/>
-        <activity android:name=".Activity.HomeActivity" />
-        <activity android:name=".Activity.MyMusicActivity" />
-        <activity android:name=".Activity.FavoriteActivity"></activity>
-        <activity android:name=".Activity.ForgotActivity"/>
+        <activity android:name=".Activity.SignupActivity" />
+        <activity android:name=".Activity.ForgotActivity" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.MymusicActivity"
+                android:theme="@style/MusicActivityTheme"/>
+        <activity android:name=".Activity.FavoriteActivity"
+            android:theme="@style/MusicActivityTheme"/>
     </application>
 
 </manifest>

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">FMusic</string>
     <string name="forgot">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

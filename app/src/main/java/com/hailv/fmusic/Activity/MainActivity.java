@@ -2,6 +2,7 @@ package com.hailv.fmusic.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -13,16 +14,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.hailv.fmusic.LoginActivity;
 import com.hailv.fmusic.R;
 import com.hailv.fmusic.model.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView navtvName, navtvEmail;
     ViewPager pager;
+    //NavigationView navi;
     TabLayout tabLayout;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mAuth = FirebaseAuth.getInstance();
+
+        //navi = findViewById(R.id.nav_view);
+        View header = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
+        navtvName = header.findViewById(R.id.nav_tvName);
+        navtvEmail = header.findViewById(R.id.nav_tvEmail);
+        updateUserInfo();
 
         //Navigation
 
@@ -114,11 +130,29 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, FavoriteActivity.class));
             Toast.makeText(this, "Favorite", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_btnLogout) {
-            finish();
+            mAuth.signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            Toast.makeText(this, "Sign out account", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void updateUserInfo(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            // User is signed in to Firebase, but we can only get
+            // basic info like name, email, and profile photo url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+
+
+            navtvName.setText(name);
+            navtvEmail.setText(email);
+        } else {
+            // User is signed out of Firebase
+        }
     }
 }

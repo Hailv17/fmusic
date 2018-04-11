@@ -14,7 +14,7 @@ import com.hailv.fmusic.model.Songs;
 
 import java.util.ArrayList;
 
-public class MymusicActivity extends AppCompatActivity {
+public class MyMusicActivity extends AppCompatActivity {
     private ArrayList<Songs> songs;
     private HomeAdapter songAdapter;
     private ListView lvMusic;

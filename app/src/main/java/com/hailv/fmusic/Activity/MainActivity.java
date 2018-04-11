@@ -2,7 +2,6 @@ package com.hailv.fmusic.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_btnHome) {
             Toast.makeText(this, "Home page", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_btnMymusic) {
-            startActivity(new Intent(MainActivity.this, MymusicActivity.class));
+            startActivity(new Intent(MainActivity.this, MyMusicActivity.class));
             Toast.makeText(this, "My music", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_btnFavorite) {
             startActivity(new Intent(MainActivity.this, FavoriteActivity.class));

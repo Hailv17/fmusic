@@ -73,18 +73,15 @@
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp"/>
-
-        <Button
-            android:id="@+id/login_btnGg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Login Google+"
             android:layout_margin="10dp"
-            android:textColor="#fff"
-            android:background="@drawable/custom_button"/>
+            android:layout_weight="1" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout

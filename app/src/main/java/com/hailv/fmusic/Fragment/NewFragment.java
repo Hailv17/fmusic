@@ -52,31 +52,11 @@ public class NewFragment extends Fragment {
                 startActivity(new Intent(getActivity(),PlayerActivity.class).putExtra("pos",position).putExtra("songList",mySongs));
             }
         });
-//        songs = new ArrayList<>();
-//        songAdapter = new HomeAdapter(getContext(),R.layout.item_home_layout,songs);
-
-//        lvMusic.setAdapter(songAdapter);
-
-//        createSong();
 
         return view;
     }
 
-    private void createSong(){
-        Songs song1 = new Songs("abc","abc");
-        Songs song2 = new Songs("abc","abc");
-        Songs song3 = new Songs("abc","abc");
-        Songs song4 = new Songs("abc","abc");
-        Songs song5 = new Songs("abc","abc");
 
-//        songs.add(song1);
-//        songs.add(song2);
-//        songs.add(song3);
-//        songs.add(song4);
-//        songs.add(song5);
-
-        songAdapter.notifyDataSetChanged();
-    }
 
 //    public void LoadListView(){
 //        HomeAdapter adapter = new HomeAdapter(getActivity(),R.layout.item_home_layout, mySongs);

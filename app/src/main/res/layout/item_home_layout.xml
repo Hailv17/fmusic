@@ -14,18 +14,13 @@
         android:layout_margin="15dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvName"
             android:text="Name"
-            android:layout_weight="1"/>
+            android:textColor="#db020a63"
+            android:textSize="14dp"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvDuration"
-            android:text="Duration"
-            android:layout_weight="1"/>
 
     </LinearLayout>
 

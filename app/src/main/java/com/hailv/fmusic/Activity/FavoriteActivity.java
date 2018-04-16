@@ -1,21 +1,29 @@
 package com.hailv.fmusic.Activity;
 
+import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.hailv.fmusic.PlayerActivity;
 import com.hailv.fmusic.R;
 import com.hailv.fmusic.model.HomeAdapter;
 import com.hailv.fmusic.model.Songs;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class FavoriteActivity extends AppCompatActivity {
-    private ArrayList<Songs> songs;
-    private HomeAdapter songAdapter;
+//    private ArrayList<Songs> songs;
+//    private HomeAdapter songAdapter;
     private ListView lvMusic;
+    String[] item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +31,46 @@ public class FavoriteActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         lvMusic = findViewById(R.id.lvFavorite);
-        songs = new ArrayList<>();
-        songAdapter = new HomeAdapter(this,R.layout.item_home_layout,songs);
 
-        lvMusic.setAdapter(songAdapter);
+        final ArrayList<File> mySongs = findSongs(Environment.getExternalStorageDirectory());
 
-        createSong();
+        item = new String[mySongs.size() ];
+        for (int i = 0; i < mySongs.size(); i++){
+            item[i] = mySongs.get(i).getName().toString().replace(".mp3","").replace("wav","");
+        }
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getApplicationContext(),R.layout.item_home_layout,R.id.tvName,item);
+        lvMusic.setAdapter(adp);
+        lvMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getApplicationContext(),PlayerActivity.class).putExtra("pos",position).putExtra("songList",mySongs));
+            }
+        });
+
+        lvMusic.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                return false;
+            }
+        });
+
+    }
+
+    public ArrayList<File> findSongs(File root){
+        ArrayList<File> a1 = new ArrayList<File>();
+        File[] files = root.listFiles();
+        for (File singleFile : files) {
+            if (singleFile.isDirectory() && !singleFile.isHidden()){
+                a1.addAll(findSongs(singleFile));
+            }
+            else {
+                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")){
+                    a1.add(singleFile);
+                }
+            }
+        }
+        return a1;
     }
 
     @Override
@@ -53,27 +95,13 @@ public class FavoriteActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void createSong(){
-        Songs song1 = new Songs("abc","abc");
-        Songs song2 = new Songs("abc","abc");
-        Songs song3 = new Songs("abc","abc");
-        Songs song4 = new Songs("abc","abc");
-        Songs song5 = new Songs("abc","abc");
 
-        songs.add(song1);
-        songs.add(song2);
-        songs.add(song3);
-        songs.add(song4);
-        songs.add(song5);
 
-        songAdapter.notifyDataSetChanged();
-    }
-
-    public void LoadListView(){
-        HomeAdapter adapter = new HomeAdapter(getApplicationContext(),R.layout.item_home_layout, songs);
-        lvMusic.setAdapter(songAdapter);
-        adapter.notifyDataSetChanged();
-    }
+//    public void LoadListView(){
+//        HomeAdapter adapter = new HomeAdapter(getApplicationContext(),R.layout.item_home_layout, songs);
+//        lvMusic.setAdapter(songAdapter);
+//        adapter.notifyDataSetChanged();
+//    }
 
     @Override
     public boolean onSupportNavigateUp(){

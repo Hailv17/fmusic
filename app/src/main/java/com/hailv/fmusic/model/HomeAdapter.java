@@ -43,7 +43,7 @@ public class HomeAdapter extends ArrayAdapter<Songs> {
             convertView = layoutInflater.inflate(R.layout.item_home_layout, parent, false);
 
             holder.tvName = (TextView)convertView.findViewById(R.id.tvName);
-            holder.tvDuration = (TextView)convertView.findViewById(R.id.tvDuration);
+
 
             convertView.setTag(holder);
         }else { //lay view tu holder

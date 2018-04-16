@@ -25,10 +25,11 @@ import java.util.ArrayList;
  */
 
 public class HotFragment extends Fragment {
-    private ArrayList<Songs> songs;
-    private HomeAdapter songAdapter;
+//    private ArrayList<Songs> songs;
+//    private HomeAdapter songAdapter;
     private ListView lvMusic;
     String[] item;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
